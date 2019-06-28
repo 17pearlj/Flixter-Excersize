@@ -9,24 +9,30 @@
 #import "MovieCollectionViewCell.h"
 #import "UIImageView+AFNetworking.h"
 #import "Details2ViewController.h"
+#import "SVProgressHUD/SVProgressHUD.h"
 
 
 @interface MoviesGridViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
 @property (nonatomic, strong) NSArray *movies;
 @property (weak, nonatomic) IBOutlet UICollectionView *movieGrid;
-
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 
 @end
 
 @implementation MoviesGridViewController
 
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [SVProgressHUD show];
     self.movieGrid.dataSource = self;
     self.movieGrid.delegate = self;
     [self fetchMovies];
-    
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(fetchMovies) forControlEvents:UIControlEventValueChanged];
+    [self.movieGrid insertSubview:self.refreshControl atIndex:0];
+
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.movieGrid.collectionViewLayout;
 
     CGFloat postersPerLine = 3;
@@ -49,24 +55,31 @@
         }
         else {
             NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-            
+           
             //NSLog(@"%@", dataDictionary);
             self.movies = dataDictionary[@"results"];
-            [self.movieGrid reloadData];
             
+            [self.movieGrid reloadData];
+         
+            [SVProgressHUD dismiss];
+
            
             // TODO: Get the array of movies
             // TODO: Store the movies in a property to use elsewhere
             // TODO: Reload your table view data
         }
-        
+   
+        [self.refreshControl endRefreshing];
+       
     }];
     [task resume];
     
 }
+- (void)didReceiveMemoryWarning{
+    [super didReceiveMemoryWarning];
+}
 
-
-#pragma mark - Navigation
+//#pragma mark - Navigation
 //
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -81,9 +94,7 @@
     //     Get the new view controller using [segue destinationViewController].
     //     Pass the selected object to the new view controller.
 }
-- (void)didReceiveMemoryWarning{
-    [super didReceiveMemoryWarning];
-}
+
 
 
 

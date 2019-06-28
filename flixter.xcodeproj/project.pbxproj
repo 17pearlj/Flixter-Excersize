@@ -23,6 +23,7 @@
 		FFF2492422C448B50065CD79 /* MoviesGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF2492322C448B50065CD79 /* MoviesGridViewController.m */; };
 		FFF2492722C5141A0065CD79 /* MovieCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF2492622C5141A0065CD79 /* MovieCollectionViewCell.m */; };
 		FFF2497022C586500065CD79 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFF2496F22C586500065CD79 /* WebKit.framework */; };
+		FFF2497622C665140065CD79 /* TrailerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF2497522C665140065CD79 /* TrailerViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,8 @@
 		FFF2492522C5141A0065CD79 /* MovieCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MovieCollectionViewCell.h; sourceTree = "<group>"; };
 		FFF2492622C5141A0065CD79 /* MovieCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MovieCollectionViewCell.m; sourceTree = "<group>"; };
 		FFF2496F22C586500065CD79 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		FFF2497422C665140065CD79 /* TrailerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TrailerViewController.h; sourceTree = "<group>"; };
+		FFF2497522C665140065CD79 /* TrailerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TrailerViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,6 +216,8 @@
 				FFF2491B22C43B460065CD79 /* Details2ViewController.h */,
 				FFF2492222C448B50065CD79 /* MoviesGridViewController.h */,
 				FFF2492322C448B50065CD79 /* MoviesGridViewController.m */,
+				FFF2497422C665140065CD79 /* TrailerViewController.h */,
+				FFF2497522C665140065CD79 /* TrailerViewController.m */,
 				FFF2491C22C43B460065CD79 /* Details2ViewController.m */,
 				FFDE803B22C3F945005F92F4 /* MoviesViewController.h */,
 				FFDE803C22C3F945005F92F4 /* MoviesViewController.m */,
@@ -444,6 +449,7 @@
 				FFF2491D22C43B460065CD79 /* Details2ViewController.m in Sources */,
 				FFDE800B22C3EBBE005F92F4 /* AppDelegate.m in Sources */,
 				FFDE804322C41976005F92F4 /* MovieCell.m in Sources */,
+				FFF2497622C665140065CD79 /* TrailerViewController.m in Sources */,
 				FFDE803D22C3F945005F92F4 /* MoviesViewController.m in Sources */,
 				FFF2492422C448B50065CD79 /* MoviesGridViewController.m in Sources */,
 				FFF2492722C5141A0065CD79 /* MovieCollectionViewCell.m in Sources */,
