@@ -8,6 +8,7 @@
 #import "MoviesGridViewController.h"
 #import "MovieCollectionViewCell.h"
 #import "UIImageView+AFNetworking.h"
+#import "Details2ViewController.h"
 
 
 @interface MoviesGridViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
@@ -38,7 +39,7 @@
 - (void)fetchMovies {
     // network call here:
     // note** now_playing url called here
-    NSURL *url = [NSURL URLWithString:@"https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed"];
+    NSURL *url = [NSURL URLWithString:@"https://api.themoviedb.org/3/movie/320288/similar?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&language=en-US"];
     NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
@@ -65,15 +66,21 @@
 }
 
 
-/*
 #pragma mark - Navigation
-
+//
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    UICollectionViewCell *tappedCell = sender;
+    NSIndexPath *indexPath = [self.movieGrid indexPathForCell:tappedCell];
+    NSDictionary *movie = self.movies[indexPath.row];
+    Details2ViewController *detailsViewController = [segue destinationViewController];
+    detailsViewController.movie = movie;
+    NSLog(@"tapped on a movie");
+    
+    
+    //     Get the new view controller using [segue destinationViewController].
+    //     Pass the selected object to the new view controller.
 }
-*/
 - (void)didReceiveMemoryWarning{
     [super didReceiveMemoryWarning];
 }

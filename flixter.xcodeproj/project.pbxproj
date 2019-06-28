@@ -22,6 +22,7 @@
 		FFF2491D22C43B460065CD79 /* Details2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF2491C22C43B460065CD79 /* Details2ViewController.m */; };
 		FFF2492422C448B50065CD79 /* MoviesGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF2492322C448B50065CD79 /* MoviesGridViewController.m */; };
 		FFF2492722C5141A0065CD79 /* MovieCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF2492622C5141A0065CD79 /* MovieCollectionViewCell.m */; };
+		FFF2497022C586500065CD79 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFF2496F22C586500065CD79 /* WebKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		FFF2492322C448B50065CD79 /* MoviesGridViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MoviesGridViewController.m; sourceTree = "<group>"; };
 		FFF2492522C5141A0065CD79 /* MovieCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MovieCollectionViewCell.h; sourceTree = "<group>"; };
 		FFF2492622C5141A0065CD79 /* MovieCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MovieCollectionViewCell.m; sourceTree = "<group>"; };
+		FFF2496F22C586500065CD79 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFF2497022C586500065CD79 /* WebKit.framework in Frameworks */,
 				D0349801EF24E1176CF4FEE8 /* Pods_flixter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -121,6 +124,7 @@
 		C5F0852924B062BA24FAD3F5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FFF2496F22C586500065CD79 /* WebKit.framework */,
 				2BD80CCCEC5278D2A42E7FDE /* Pods_flixter.framework */,
 				D7A58987559A59C3D6DA641D /* Pods_flixterTests.framework */,
 				E1140F4A8D1CA7B72AECD98D /* Pods_flixterUITests.framework */,

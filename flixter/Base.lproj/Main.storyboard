@@ -45,7 +45,7 @@
             </objects>
             <point key="canvasLocation" x="1529" y="-692"/>
         </scene>
-        <!--Movies Grid View Controller-->
+        <!--Superhero-->
         <scene sceneID="GZ0-1x-tTT">
             <objects>
                 <viewController id="Lti-y8-kPm" customClass="MoviesGridViewController" sceneMemberID="viewController">
@@ -75,10 +75,15 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="174" height="256"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 </imageView>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JAw-q2-Dle">
+                                                    <rect key="frame" x="0.0" y="0.0" width="174" height="256"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                                </imageView>
                                             </subviews>
                                         </view>
                                         <connections>
                                             <outlet property="moviePic" destination="ugW-lL-Qrl" id="tNb-HA-MRh"/>
+                                            <segue destination="EjE-7v-vH0" kind="push" id="kke-cb-khJ"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -87,7 +92,7 @@
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="ejd-Z2-ZMI"/>
                     </view>
-                    <navigationItem key="navigationItem" id="ILK-6D-g97"/>
+                    <navigationItem key="navigationItem" title="Superhero" id="ILK-6D-g97"/>
                     <connections>
                         <outlet property="movieGrid" destination="JXb-Bu-fE9" id="yar-Qb-UM2"/>
                     </connections>
@@ -149,12 +154,23 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qo8-pV-dLI">
+                                <rect key="frame" x="0.0" y="88" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qKR-O4-0RC">
+                                <rect key="frame" x="0.0" y="88" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Movies" id="BfN-OK-fvN"/>
                     <connections>
+                        <outlet property="movieSearch" destination="qKR-O4-0RC" id="tfQ-x8-a5V"/>
                         <outlet property="tableView" destination="ZM3-Hq-q73" id="SKJ-P1-9w7"/>
                     </connections>
                 </viewController>
@@ -200,23 +216,34 @@
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <wkWebView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gHV-pK-zYo">
+                                        <rect key="frame" x="199" y="470" width="103" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <wkWebViewConfiguration key="configuration">
+                                            <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                            <wkPreferences key="preferences"/>
+                                        </wkWebViewConfiguration>
+                                    </wkWebView>
                                 </subviews>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <viewLayoutGuide key="safeArea" id="kwI-jf-0IE"/>
                     </view>
+                    <navigationItem key="navigationItem" id="VoY-eK-hCT"/>
                     <connections>
                         <outlet property="backgroundImg" destination="FmH-wK-D3l" id="IGS-4h-aUg"/>
                         <outlet property="dateMov" destination="byZ-Z1-Cr1" id="H7c-tD-Tsl"/>
                         <outlet property="descMov" destination="QSJ-PO-V3f" id="haE-zi-bgJ"/>
                         <outlet property="posterImg" destination="RqR-qR-v46" id="4vo-g0-rOx"/>
                         <outlet property="titleMov" destination="A29-ER-740" id="jF7-BK-qn2"/>
+                        <outlet property="trailerLink" destination="gHV-pK-zYo" id="HNO-A1-fR0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X0W-zu-QSe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="859" y="814"/>
+            <point key="canvasLocation" x="857.97101449275374" y="813.61607142857144"/>
         </scene>
         <!--Now Playing-->
         <scene sceneID="C8C-oe-ESK">
@@ -242,4 +269,7 @@
         <image name="now_playing_tabbar_item" width="21" height="21"/>
         <image name="superhero_tabbar_item" width="21" height="23"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="kke-cb-khJ"/>
+    </inferredMetricsTieBreakers>
 </document>
