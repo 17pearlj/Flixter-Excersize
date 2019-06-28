@@ -105,7 +105,11 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     MovieCell *cell = [tableView dequeueReusableCellWithIdentifier: @"MovieCell"];
-    NSDictionary *movie = self.movies[indexPath.row];
+    NSDictionary *movie = self.filteredMovies[indexPath.row];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//    UIView *backgroundView = [[UIView alloc] init];
+//    backgroundView.backgroundColor = UIColor.redColor;
+//    cell.selectedBackgroundView = backgroundView;
     cell.movieTitle.text = movie[@"title"];
     cell.movieDescription.text = movie[@"overview"];
     NSString *baseURLString = @"https://image.tmdb.org/t/p/w500";
@@ -113,7 +117,8 @@
     NSString *fullPosterURLString = [baseURLString stringByAppendingString:posterURLString];
     NSURL *posterURL = [NSURL URLWithString:fullPosterURLString];
     cell.moviePic.image = nil;
-    [cell.moviePic setImageWithURL:posterURL];
+    [self fadePic:cell.moviePic withURL:posterURL];
+    //[cell.moviePic setImageWithURL:posterURL];
  
     
     return cell;
@@ -136,7 +141,31 @@
     [self.tableView reloadData];
     
 }
-
+-(void)fadePic: (UIImageView *)imgFading withURL: (NSURL *)urlProvided{
+    NSURLRequest *request = [NSURLRequest requestWithURL:urlProvided];
+    [imgFading setImageWithURLRequest:request placeholderImage:nil
+                              success:^(NSURLRequest *imageRequest, NSHTTPURLResponse *imageResponse, UIImage *image) {
+                                  
+                                  // imageResponse will be nil if the image is cached
+          if (imageResponse) {
+              NSLog(@"Image was NOT cached, fade in image");
+              imgFading.alpha = 0.0;
+              imgFading.image = image;
+              
+              //Animate UIImageView back to alpha 1 over 0.3sec
+              [UIView animateWithDuration:0.8 animations:^{
+                  imgFading.alpha = 1.0;
+              }];
+          }
+          else {
+              NSLog(@"Image was cached so just update the image");
+              imgFading.image = image;
+          }
+      }
+      failure:^(NSURLRequest *request, NSHTTPURLResponse * response, NSError *error) {
+          // do something for the failure condition
+      }];
+}
 
 //#pragma mark - Navigation
 //
@@ -144,7 +173,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     UITableViewCell *tappedCell = sender;
     NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
-    NSDictionary *movie = self.movies[indexPath.row];
+    NSDictionary *movie = self.filteredMovies[indexPath.row];
     Details2ViewController *detailsViewController = [segue destinationViewController];
     detailsViewController.movie = movie;
     NSLog(@"tapped on a movie");
